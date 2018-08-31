@@ -15,7 +15,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Instalysis</title>
+	<title>Merkalysis</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,500,600" rel="stylesheet">
 		<!--
@@ -208,7 +208,6 @@
 			</section>
 			 <!-- Modal -->
 			   <!-- Trigger the modal with a button -->
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 		</div>
 			<!-- End Footer Widget Area -->
 			<!-- Start footer Area -->
@@ -241,7 +240,7 @@
 			var caption = $('#txt_name2').val();
 			console.log(followers)
 			$.ajax({
-			  url : '/analysis/getresponse/'+followers+'/'+caption+'/',
+			  url : '/analysis/api/'+followers+'/'+caption+'/',
 			  dataType : 'json',
 			  type : 'GET',
 			  success: function(data)
