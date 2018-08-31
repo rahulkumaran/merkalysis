@@ -13,7 +13,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import mean_squared_error
 from sklearn.externals import joblib
-
+import sendgrid
+from sendgrid.helpers.mail import *
 
 
 pd.options.mode.chained_assignment = None
@@ -28,6 +29,9 @@ prod -> Product
 dev -> Development
 '''
 ######################################### CUSTOM FUNCTIONS TO PERFORM TASKS #############################################
+email_list = ["rahuldravid313@gmail.com","rahul160562@mechyd.ac.in", "gillarohith1@gmail.com"]
+sg = sendgrid.SendGridAPIClient(apikey="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")
+
 
 def custom_sum(df_list):	#Custom sum function to calculate likes as some fields have video views as well in dataset
 	summ = 0		#Initialising value to zero
@@ -216,6 +220,15 @@ def model(frame_df, no_followers=400):
 	expected_reach = "Expected Reach is " + str(int(reach_pred-round(mse**0.5))) + "-" + str(int(reach_pred+round(mse**0.5)))
 	return expected_reach
 
+def sendmail(email_id, caption):
+	from_email = Email("rahulkumaran313@gmail.com", name="Rahul Arulkumaran")
+	to_email = Email(email_id)
+	subject = "Weekly Updates From Merkalysis"
+	content = Content("text/html", "<html><body><p>A post is up on Instagram from _rahul_kumaran_'s account with a caption \"" + caption + "\"</p></body></html>")
+	mail = Mail(from_email, subject, to_email, content)
+	response = sg.client.mail.send.post(request_body=mail.get())
+	return response
+
 def Main():
 	df = pd.read_csv("datasets/combined_hashtag.csv")		#Reading the new csv file
 	frame_df = pd.DataFrame(df)
@@ -225,6 +238,9 @@ def Main():
 	#data_science(df, frame_df)
 	expected_reach = model(frame_df, no_followers)
 	print(expected_reach + '\n\n' + str(hash_list))
+	for email_id in email_list:
+		response = sendmail(email_id, caption)
+		print(response.status_code)
 
 
 
