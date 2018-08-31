@@ -25,6 +25,23 @@ This might help you as it serves as the right tool for you to make your business
 Through a given caption and photo, we predict your hashtags. We try our level best to predict the hashtags you use in such a way that it increases you reach!<br>
 Sounds cool right? :heart: <br>
 
+## Integrations
+
+## Zulip
+<center><img src="https://raw.githubusercontent.com/zulip/swift-zulip-api/master/assets/zulip-logo.png" width="100" height="100"></center><br>
+Currently, Merkalysis has an active Zulip integration where one can simply join the server. ![This](https://merkalysis.zulipchat.com) is the organisation url. You can join this organisation for the following reasons:<br>
+- You can publicize your post to a bigger crowd with many people sharing the same interest as your post.
+- You can use the functionality of predicting the reach and getting hashtags on Zulip itself.
+- You can also view posts of other people and this, on the whole, would be like an organic marketing group.
+- You have dedicated channels here, so one can post the link of their posts in the dedicated channels (like tech, finance, etc).
+#### How to use the bot's functionality on Zulip?
+To use the bot on Zulip to predict your reach and also hashtags that possibly might be good for your post, use the following command:<br>
+
+    merkalysis reach <num_followers> <caption>
+    Example : merkalysis reach 500 I love machine learning and blockchain. I have my own product development startup.
+   
+<img src="images/zulip.png" width="100" height="100"><br>
+That's it! Too Simple maybe? :smile:
 
 
 
