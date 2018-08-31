@@ -34,7 +34,9 @@ Currently, Merkalysis has an active Zulip integration where one can simply join 
 - You can use the functionality of predicting the reach and getting hashtags on Zulip itself.
 - You can also view posts of other people and this, on the whole, would be like an organic marketing group.
 - You have dedicated channels here, so one can post the link of their posts in the dedicated channels (like tech, finance, etc).<br>
+
 #### How to use the bot's functionality on Zulip?
+
 To use the bot on Zulip to predict your reach and also hashtags that possibly might be good for your post, use the following command:<br>
 
     merkalysis reach <num_followers> <caption>
