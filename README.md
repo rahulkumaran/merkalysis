@@ -22,7 +22,8 @@ We basically analyse the hashtags that you use.<br>
 Through the hashtags that you use, we predict your reach.<br>
 This might help you as it serves as the right tool for you to make your business related decisions.<br>
 ### An Extension To This !!!!
-Through a given caption, we predict your hashtags in such a way that it increases your reach! :heart:
+Through a given caption and photo, we predict your hashtags. We try our level best to predict the hashtags you use in such a way that it increases you reach!<br>
+Sounds cool right? :heart: <br>
 
 
 
