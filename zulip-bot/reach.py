@@ -80,15 +80,8 @@ class Reach(object):
 		pred = lr.predict(test_x)		#Predicting the answers for valdiation data
 
 		mse = mean_squared_error(pred, test_y)	#finding the mean squared error
-
-
-		try:
-			model = joblib.load("models/reach_model")
-		except:
-			os.system("mkdir models")
-			joblib.dump(lr, "models/reach_model",compress=9)
-			model = joblib.load("models/reach_model")
-
+		model = joblib.load("../models/reach_model")
+		
 		reach_pred = model.predict([[no_followers,10]])
 		#print(reach_pred, mse)
 		expected_reach = "Expected Reach is " + str(int(reach_pred-round(mse**0.5))) + "-" + str(int(reach_pred+round(mse**0.5)))
@@ -96,7 +89,7 @@ class Reach(object):
 
 
 	def combine(self, followers, caption):
-		df = pd.read_csv("datasets/combined_hashtag.csv")		#Reading the new csv file
+		df = pd.read_csv("d../atasets/combined_hashtag.csv")		#Reading the new csv file
 		frame_df = pd.DataFrame(df)
 		hash_list = self.caption_hashtag_generator(caption)
 		#data_science(df, frame_df)

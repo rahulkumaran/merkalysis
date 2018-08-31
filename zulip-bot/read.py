@@ -2,12 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import nltk
 
-ml = pd.read_excel('datasets/hashtag.xls', sheet_name='#Machinelearning')		#Reading the #machinelearning sheet from the .xls file
-bc = pd.read_excel('datasets/hashtag.xls', sheet_name='#blockchain')		#Reading the #blokchain sheet from the .xls file
-ai = pd.read_excel('datasets/hashtag.xls', sheet_name='#artificialintelligence')	#Reading the #artificialintelligence sheet from the .xls file
-su = pd.read_excel('datasets/hashtag.xls', sheet_name='#startup')			#Reading the #startup sheet from the .xls file
-prod = pd.read_excel('datasets/hashtag.xls', sheet_name='#product')		#Reading the #product sheet from the .xls file
-dev = pd.read_excel('datasets/hashtag.xls', sheet_name='#development')		#Reading the #development sheet from the .xls file
+ml = pd.read_excel('../datasets/hashtag.xls', sheet_name='#Machinelearning')		#Reading the #machinelearning sheet from the .xls file
+bc = pd.read_excel('../datasets/hashtag.xls', sheet_name='#blockchain')		#Reading the #blokchain sheet from the .xls file
+ai = pd.read_excel('../datasets/hashtag.xls', sheet_name='#artificialintelligence')	#Reading the #artificialintelligence sheet from the .xls file
+su = pd.read_excel('../datasets/hashtag.xls', sheet_name='#startup')			#Reading the #startup sheet from the .xls file
+prod = pd.read_excel('../datasets/hashtag.xls', sheet_name='#product')		#Reading the #product sheet from the .xls file
+dev = pd.read_excel('../datasets/hashtag.xls', sheet_name='#development')		#Reading the #development sheet from the .xls file
 
 
 frame_ml = pd.DataFrame(ml)		#Converting the read ml sheets into dataframes
@@ -20,9 +20,9 @@ frame_dev = pd.DataFrame(dev)		#Converting the read dev sheets into dataframes
 
 combined_data = pd.concat([frame_ml,frame_bc,frame_ai,frame_su,frame_prod,frame_dev])	#Merging all the hashtag dataframes got from the separate sheets in the .xls file
 
-combined_data.to_csv("datasets/combined_hashtag.csv")		#Converting the entire set of data into a new csv file with all hashtags merged
+combined_data.to_csv("../datasets/combined_hashtag.csv")		#Converting the entire set of data into a new csv file with all hashtags merged
 
-frame_csv = pd.read_csv("datasets/combined_hashtag.csv")
+frame_csv = pd.read_csv("../datasets/combined_hashtag.csv")
 df = pd.DataFrame(frame_csv)
 
 hashtags = []		#Initialising hashtags list
