@@ -4,3 +4,4 @@ sklearn
 pandas
 numpy
 matplotlib
+django
