@@ -40,7 +40,7 @@ To use the bot on Zulip to predict your reach and also hashtags that possibly mi
     merkalysis reach <num_followers> <caption>
     Example : merkalysis reach 500 I love machine learning and blockchain. I have my own product development startup.
    
-<img src="images/zulip.png" width="500" height="300"><br>
+<img src="images/zulip.png" width="1000" height="600"><br>
 That's it! Too Simple maybe? :smile:
 
 
