@@ -240,7 +240,7 @@
 			var caption = $('#txt_name2').val();
 			console.log(followers)
 			$.ajax({
-			  url : '/analysis/api/'+followers+'/'+caption+'/',
+			  url : '/api/followers='+followers+'/caption='+caption+'/',
 			  dataType : 'json',
 			  type : 'GET',
 			  success: function(data)
