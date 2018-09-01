@@ -21,6 +21,7 @@ Not everyone uses hashtags in today's world. We look at promoting the usage of h
 We basically analyse the hashtags that you use.<br>
 Through the hashtags that you use, we predict your reach.<br>
 This might help you as it serves as the right tool for you to make your business related decisions.<br>
+
 ### An Extension To This !!!!
 Through a given caption and photo, we predict your hashtags. We try our level best to predict the hashtags you use in such a way that it increases you reach!<br>
 Sounds cool right? :heart: <br>
@@ -29,12 +30,14 @@ Sounds cool right? :heart: <br>
 
 ## Zulip
 <center><img src="https://raw.githubusercontent.com/zulip/swift-zulip-api/master/assets/zulip-logo.png" width="100" height="100"></center><br>
-Currently, Merkalysis has an active Zulip integration where one can simply join the server. ![This](https://merkalysis.zulipchat.com) is the organisation url. You can join this organisation for the following reasons:<br>
+Currently, Merkalysis has an active Zulip integration where one can simply join the server. <a href="https://merkalysis.zulipchat.com">This</a> is the organisation url. You can join this organisation for the following reasons:<br>
 - You can publicize your post to a bigger crowd with many people sharing the same interest as your post.
 - You can use the functionality of predicting the reach and getting hashtags on Zulip itself.
 - You can also view posts of other people and this, on the whole, would be like an organic marketing group.
-- You have dedicated channels here, so one can post the link of their posts in the dedicated channels (like tech, finance, etc).
+- You have dedicated channels here, so one can post the link of their posts in the dedicated channels (like tech, finance, etc).<br>
+
 #### How to use the bot's functionality on Zulip?
+
 To use the bot on Zulip to predict your reach and also hashtags that possibly might be good for your post, use the following command:<br>
 
     merkalysis reach <num_followers> <caption>
