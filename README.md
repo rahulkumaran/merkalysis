@@ -7,9 +7,6 @@ This tool can be used by anyone as it predicts the reach and perhaps the right h
 Currently this works only for Instagram. We'll be expanding this soon.
 
 
-## When was this made?
-Hack performed during MS-Hacks 2.0 at LPU, Phagwara, Punjab.
-
 ## Why Merkalysis?
 As mentioned above, merkalysis helps one to analyse their market reach before hand. This could potetntially save thousands of dollars every year as marketing is something that every company and/or blogger, especially small scale startups and bloggers do in order to increase their brand awareness.<br>
 Marketing is something that will never die. Through Merkalysis, we provide easier marketing solutions. More precisely, we focus on organic marketing, i.e marketing without having to pay money over inorganic marketing.<br>
@@ -31,9 +28,12 @@ Sounds cool right? :heart: <br>
 ## Zulip
 <center><img src="https://raw.githubusercontent.com/zulip/swift-zulip-api/master/assets/zulip-logo.png" width="100" height="100"></center><br>
 Currently, Merkalysis has an active Zulip integration where one can simply join the server. <a href="https://merkalysis.zulipchat.com">This</a> is the organisation url. You can join this organisation for the following reasons:<br>
-- You can publicize your post to a bigger crowd with many people sharing the same interest as your post.
-- You can use the functionality of predicting the reach and getting hashtags on Zulip itself.
-- You can also view posts of other people and this, on the whole, would be like an organic marketing group.
+- You can publicize your post to a bigger crowd with many people sharing the same interest as your post.<br>
+
+- You can use the functionality of predicting the reach and getting hashtags on Zulip itself.<br>
+
+- You can also view posts of other people and this, on the whole, would be like an organic marketing group.<br>
+
 - You have dedicated channels here, so one can post the link of their posts in the dedicated channels (like tech, finance, etc).<br>
 
 #### How to use the bot's functionality on Zulip?
@@ -63,10 +63,35 @@ For now, you can call the API for 3 different purposes.<br>
 
 - To predict both, the reach and hashtags, given the followers or number of friends and caption respectively.
 
-        ending a request to "localhost:8000/api/followers=<num_of_followers_or_friends>/caption=<caption>"
+        sending a request to "localhost:8000/api/followers=<num_of_followers_or_friends>/caption=<caption>"
         returns the reach predicted by the current model and hashtags that could possibly used in your posts
         
  The API can be used by anyone and is free to use for the time being. We might make it paid after a while.<br>
  One need not use a private key to access the API for now. You just need to send requests to the mentioned URLs and the response will be got in JSON format.<br>
+
+<img src="images/api.png" width="800" height="450">
+
+
+## Contributing
+
+Contributions of all sizes are welcome. Please review our <a href="#">contribution guidelines</a> to get started. You can also help by <a href="#">reporting bugs</a>.
+
+
+## License
+
+You may copy, distribute and modify the software provided that modifications are described and licensed for free under LGPL-3. Derivatives works (including modifications or anything statically linked to the library) can only be redistributed under LGPL-3, but applications that use the library don't have to be.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
