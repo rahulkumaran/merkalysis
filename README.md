@@ -50,17 +50,17 @@ For now, you can call the API for 3 different purposes.<br>
 
 - To predict only the reach given the number of followers or friends you have
 
-        sending a request to "localhost:8000/analysis/api/<num_of_followers_or_friends>"
+        sending a request to "localhost:8000/api/followers=<num_of_followers_or_friends>"
         returns the reach predicted by the current model
         
 - To predict only the hashtags given a particular caption
 
-        sending a request to "localhost:8000/analysis/api/<caption>"
+        sending a request to "localhost:8000/api/caption=<caption>"
         returns hashtags that could possibly used in your posts
 
 - To predict both, the reach and hashtags, given the followers or number of friends and caption respectively.
 
-        ending a request to "localhost:8000/analysis/api/<num_of_followers_or_friends>/<caption>"
+        ending a request to "localhost:8000/api/followers=<num_of_followers_or_friends>/caption=<caption>"
         returns the reach predicted by the current model and hashtags that could possibly used in your posts
         
  The API can be used by anyone and is free to use for the time being. We might make it paid after a while.<br>
