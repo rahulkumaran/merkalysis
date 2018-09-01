@@ -1,4 +1,6 @@
 import re
+import math
+from collections import Counter
 import os
 import string
 from read import *
@@ -31,7 +33,7 @@ dev -> Development
 ######################################### CUSTOM FUNCTIONS TO PERFORM TASKS #############################################
 email_list = ["rahuldravid313@gmail.com","rahul160562@mechyd.ac.in", "gillarohith1@gmail.com"]
 sg = sendgrid.SendGridAPIClient(apikey="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")
-
+WORD = re.compile(r'\w+')
 
 def custom_sum(df_list):	#Custom sum function to calculate likes as some fields have video views as well in dataset
 	summ = 0		#Initialising value to zero
@@ -55,6 +57,20 @@ def custom_time_list(df_list):	#Custom time sum function to calculate the sum of
 		df_list[i] = df_list[i].replace(u' hours',u'')	#Replacing " hours" with a null string
 		df_list[i] = int(df_list[i])	#Adding the integral value of hours to summ
 	return df_list
+
+
+def get_cosine(vec1, vec2):
+     intersection = set(vec1.keys()) & set(vec2.keys())
+     numerator = sum([vec1[x] * vec2[x] for x in intersection])
+     sum1 = sum([vec1[x]**2 for x in vec1.keys()])
+     sum2 = sum([vec2[x]**2 for x in vec2.keys()])
+     denominator = math.sqrt(sum1) * math.sqrt(sum2)
+     return float(numerator) / denominator
+
+def text_to_vector(text):
+     words = WORD.findall(text)
+     return Counter(words)
+
 
 def dataset_hashtag_generator(df_list):
 	try:
@@ -238,12 +254,15 @@ def Main():
 	#data_science(df, frame_df)
 	expected_reach = model(frame_df, no_followers)
 	print(expected_reach + '\n\n' + str(hash_list))
-	for email_id in email_list:
+	'''for email_id in email_list:
 		response = sendmail(email_id, caption)
-		print(response.status_code)
+		print(response.status_code)'''
 
+	'''t1 = text_to_vector("machine")
+	t2 = text_to_vector("machine learning")
 
-
+	cosine = get_cosine(t1,t2)
+	print(cosine)'''
 
 
 
