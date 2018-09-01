@@ -22,5 +22,7 @@ urlpatterns = [
     url(r'^$', views.home, name="index"),
     path('admin/', admin.site.urls),
     path('analysis/', include('analysis.urls')),
-
+    url(r'^api/followers=(?P<pk1>\d+)/caption=(?P<state>.+?)/$', views.get_resp, name="get_response"),
+    url(r'^api/followers=(?P<pk1>\d+)/$', views.get_reach, name="get_reach"),
+    url(r'^api/caption=(?P<state>.+?)/$', views.get_hashtag, name="get_response"),
 ]

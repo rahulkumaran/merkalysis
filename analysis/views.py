@@ -288,5 +288,24 @@ def get_resp(request,*args,**kwargs):
 			'hashtag_suggest':"#"+str("#".join(hashtags[0]))
 			})
 
+
+def get_hashtag(request,*args,**kwargs):    	
+		model = joblib.load("static/models/reach_model")
+		hashtags = caption_hashtag_generator(kwargs['state'])	
+		return JsonResponse({
+			'caption':kwargs['state'],			
+			'hashtag_suggest':"#"+str("#".join(hashtags[0]))
+			})
+
+def get_reach(request,*args,**kwargs):    	
+		model = joblib.load("static/models/reach_model")
+		reach_pred = model.predict([[int(kwargs['pk1']),10]])
+		reach_pred = reach_pred[0][0]
+		return JsonResponse({			
+			'followers':kwargs['pk1'],
+			'reach_pred':"Expected Reach is " + str(int(reach_pred-round(mse**0.5))) + "-" + str(int(reach_pred+round(mse**0.5))),			
+			})
+
+
 def formV(request,*args,**kwargs):
 	return render(request,"analysis/form.html",{})	
