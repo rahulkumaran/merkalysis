@@ -63,10 +63,26 @@ For now, you can call the API for 3 different purposes.<br>
 
 - To predict both, the reach and hashtags, given the followers or number of friends and caption respectively.
 
-        ending a request to "localhost:8000/api/followers=<num_of_followers_or_friends>/caption=<caption>"
+        sending a request to "localhost:8000/api/followers=<num_of_followers_or_friends>/caption=<caption>"
         returns the reach predicted by the current model and hashtags that could possibly used in your posts
         
  The API can be used by anyone and is free to use for the time being. We might make it paid after a while.<br>
  One need not use a private key to access the API for now. You just need to send requests to the mentioned URLs and the response will be got in JSON format.<br>
+
+<img src="images/api.png" width="800" height="450">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
