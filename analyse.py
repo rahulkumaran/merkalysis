@@ -1,9 +1,9 @@
-from django.shortcuts import render
-from django.template.context import RequestContext
+import re
+import os
 import string
+from read import *
 import pandas as pd
 from pandas import ExcelWriter, ExcelFile
-from django.http import HttpResponse
 import numpy as np
 import matplotlib.pyplot as plt
 import spacy
@@ -13,40 +13,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import mean_squared_error
 from sklearn.externals import joblib
-import re
-from django.http import JsonResponse
-import os
-
-
-ml = pd.read_excel('datasets/hashtag.xls', sheet_name='#Machinelearning')		#Reading the #machinelearning sheet from the .xls file
-bc = pd.read_excel('datasets/hashtag.xls', sheet_name='#blockchain')		#Reading the #blokchain sheet from the .xls file
-ai = pd.read_excel('datasets/hashtag.xls', sheet_name='#artificialintelligence')	#Reading the #artificialintelligence sheet from the .xls file
-su = pd.read_excel('datasets/hashtag.xls', sheet_name='#startup')			#Reading the #startup sheet from the .xls file
-prod = pd.read_excel('datasets/hashtag.xls', sheet_name='#product')		#Reading the #product sheet from the .xls file
-dev = pd.read_excel('datasets/hashtag.xls', sheet_name='#development')		#Reading the #development sheet from the .xls file
-
-
-frame_ml = pd.DataFrame(ml)		#Converting the read ml sheets into dataframes
-frame_bc = pd.DataFrame(bc)		#Converting the read bc sheets into dataframes
-frame_ai = pd.DataFrame(ai)		#Converting the read ai sheets into dataframes
-frame_su = pd.DataFrame(su)		#Converting the read su sheets into dataframes
-frame_prod = pd.DataFrame(prod)		#Converting the read prod sheets into dataframes
-frame_dev = pd.DataFrame(dev)		#Converting the read dev sheets into dataframes
-
-
-combined_data = pd.concat([frame_ml,frame_bc,frame_ai,frame_su,frame_prod,frame_dev])	#Merging all the hashtag dataframes got from the separate sheets in the .xls file
-
-combined_data.to_csv("datasets/combined_hashtag.csv")		#Converting the entire set of data into a new csv file with all hashtags merged
-
-df = pd.read_csv("datasets/combined_hashtag.csv")
-frame_df = pd.DataFrame(df)
-
-hashtags = []		#Initialising hashtags list
-
-for hs in df["Hashtags"]:	#Reading every hashtag that was used in posts
-	hashtags += hs.split("#")
-
-
+import sendgrid
+from sendgrid.helpers.mail import *
 
 
 pd.options.mode.chained_assignment = None
@@ -60,8 +28,10 @@ su -> StartUp
 prod -> Product
 dev -> Development
 '''
-
 ######################################### CUSTOM FUNCTIONS TO PERFORM TASKS #############################################
+email_list = ["rahuldravid313@gmail.com","rahul160562@mechyd.ac.in", "gillarohith1@gmail.com"]
+sg = sendgrid.SendGridAPIClient(apikey="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")
+
 
 def custom_sum(df_list):	#Custom sum function to calculate likes as some fields have video views as well in dataset
 	summ = 0		#Initialising value to zero
@@ -250,62 +220,31 @@ def model(frame_df, no_followers=400):
 	expected_reach = "Expected Reach is " + str(int(reach_pred-round(mse**0.5))) + "-" + str(int(reach_pred+round(mse**0.5)))
 	return expected_reach
 
+def sendmail(email_id, caption):
+	from_email = Email("rahulkumaran313@gmail.com", name="Rahul Arulkumaran")
+	to_email = Email(email_id)
+	subject = "Weekly Updates From Merkalysis"
+	content = Content("text/html", "<html><body><p>A post is up on Instagram from _rahul_kumaran_'s account with a caption \"" + caption + "\"</p></body></html>")
+	mail = Mail(from_email, subject, to_email, content)
+	response = sg.client.mail.send.post(request_body=mail.get())
+	return response
+
+def Main():
+	df = pd.read_csv("datasets/combined_hashtag.csv")		#Reading the new csv file
+	frame_df = pd.DataFrame(df)
+	caption = input("What's your caption?\n")
+	no_followers = int(input("How many followers do you have on Instagram?\n"))
+	hash_list = caption_hashtag_generator(caption)
+	#data_science(df, frame_df)
+	expected_reach = model(frame_df, no_followers)
+	print(expected_reach + '\n\n' + str(hash_list))
+	for email_id in email_list:
+		response = sendmail(email_id, caption)
+		print(response.status_code)
 
 
-custom_time_list(frame_df['Time since posted'])
-inp = frame_df[['Followers', 'Time since posted']]
-
-op = frame_df[['Likes']]
-train_x, test_x, train_y, test_y = train_test_split(inp, op, test_size = 0.2, random_state = 999)
-lr = LinearRegression().fit(train_x, train_y)	#Fitting and creating a model
-
-pred = lr.predict(test_x)		#Predicting the answers for valdiation data
-
-mse = mean_squared_error(pred, test_y)	#finding the mean squared error
-try:
-	model = joblib.load("models/reach_model")
-except:
-	os.system("mkdir models")
-	joblib.dump(lr, "models/reach_model",compress=9)
-	model = joblib.load("models/reach_model")
 
 
-def home(request):
-    	if request.method == "POST":
-    			return render(request,'analysis/index.html',{"context":"Blahblah"})
-    	return render(request,'analysis/index.html',{})
-		
-
-def get_resp(request,*args,**kwargs):    	
-		model = joblib.load("static/models/reach_model")
-		reach_pred = model.predict([[int(kwargs['pk1']),10]])
-		reach_pred = reach_pred[0][0]
-		hashtags = caption_hashtag_generator(kwargs['state'])	
-		return JsonResponse({
-			'caption':kwargs['state'],
-			'followers':kwargs['pk1'],
-			'reach_pred':"Expected Reach is " + str(int(reach_pred-round(mse**0.5))) + "-" + str(int(reach_pred+round(mse**0.5))),
-			'hashtag_suggest':"#"+str("#".join(hashtags[0]))
-			})
 
 
-def get_hashtag(request,*args,**kwargs):    	
-		model = joblib.load("static/models/reach_model")
-		hashtags = caption_hashtag_generator(kwargs['state'])	
-		return JsonResponse({
-			'caption':kwargs['state'],			
-			'hashtag_suggest':"#"+str("#".join(hashtags[0]))
-			})
 
-def get_reach(request,*args,**kwargs):    	
-		model = joblib.load("static/models/reach_model")
-		reach_pred = model.predict([[int(kwargs['pk1']),10]])
-		reach_pred = reach_pred[0][0]
-		return JsonResponse({			
-			'followers':kwargs['pk1'],
-			'reach_pred':"Expected Reach is " + str(int(reach_pred-round(mse**0.5))) + "-" + str(int(reach_pred+round(mse**0.5))),			
-			})
-
-
-def formV(request,*args,**kwargs):
-	return render(request,"analysis/form.html",{})	
