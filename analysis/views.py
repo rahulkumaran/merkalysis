@@ -282,8 +282,8 @@ def get_resp(request,*args,**kwargs):
 		reach_pred = reach_pred[0][0]
 		hashtags = caption_hashtag_generator(kwargs['state'])	
 		return JsonResponse({
-			'caption':kwargs['state'],
 			'followers':kwargs['pk1'],
+			'caption':kwargs['state'],			
 			'reach_pred':"Expected Reach is " + str(int(reach_pred-round(mse**0.5))) + "-" + str(int(reach_pred+round(mse**0.5))),
 			'hashtag_suggest':"#"+str("#".join(hashtags[0]))
 			})
