@@ -8,7 +8,7 @@ Currently this works only for Instagram. We'll be expanding this soon.
 
 
 ## Why Merkalysis?
-As mentioned above, merkalysis helps one to analyse their market reach before hand. This could potetntially save thousands of dollars every year as marketing is something that every company and/or blogger, especially small scale startups and bloggers do in order to increase their brand awareness.<br>
+As mentioned above, merkalysis helps one to analyse their market reach before hand. This could potentially save thousands of dollars every year as marketing is something that every company and/or blogger, especially small scale startups and bloggers do in order to increase their brand awareness.<br>
 Marketing is something that will never die. Through Merkalysis, we provide easier marketing solutions. More precisely, we focus on organic marketing, i.e marketing without having to pay money over inorganic marketing.<br>
 Usually people turn towards social media marketing. Not always do they get the reach that is promised to them. Sometimes, just to meet their targets, these social media platforms turn to clickfarms to have the post reached to the promised number which is unfair for the advertiser. Also, as mentioned earlier, this eats away a lot of money.<br>
 Merkalysis predicts your market reach before hand.
